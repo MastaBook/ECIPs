@@ -8,11 +8,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby 2.6
-      uses: actions/setup-ruby@v1
+      uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.6.x
+        ruby-version: 2.6.10
     - name: Validate the ECIP spec files
       run: |
-        gem install bundler
+        gem install bundler -v 2.4.22
         bundle install --jobs 4 --retry 3
         shopt -s globstar; bundle exec ecip_validator _specs/**/*.md
